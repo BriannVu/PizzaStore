@@ -1,0 +1,400 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="BaoNamVu_SpringFinalProject.AfterLoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BaoNamVu_SpringFinalProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:BaoNamVu_SpringFinalProject.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FFF1F1F1">
+        <StackPanel Orientation="Vertical">
+            <Grid Background="#FFBA4545">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="20 0 0 0" Text="Papa Dario's Pizza - Ordering App" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                <TextBlock x:ConnectionId='68' Grid.Column="1" Text="Welcome " x:Name="WelcomeTextBlock" FontWeight="Bold" TextAlignment="Center"  VerticalAlignment="Center"></TextBlock>
+                <Button x:ConnectionId='69'  x:Name="backToLoginPageButton" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"                                    >Back To Login/Register</Button>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer  Height="630" VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Visible" Grid.Column="0"  Margin="10 0 10 0" >
+                    <StackPanel  Orientation="Vertical" Padding="5 10 0 5">
+                        <StackPanel Padding="5 5 0 5" Orientation="Vertical" Background="White" >
+                            <TextBlock Text="Today deal" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <TextBlock Text="! FREE SHIP for order over $50 - (pre-tax) - (can apply with other deals)" Foreground="Black"></TextBlock>
+                            <TextBlock Text="Member discount: 10% OFF" Margin="0 10" Foreground="Black"></TextBlock >
+                        </StackPanel>
+                        <StackPanel x:ConnectionId='25' x:Name="suggestionTextBox" Orientation="Vertical" Background="White" Margin="0 10 0 0" Padding="5 5 0 5" Visibility="Collapsed">
+                            <TextBlock Text="Suggestion from your most recent orders (Max 3)" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <TextBlock x:ConnectionId='65'  Foreground="Black" x:Name="suggestion1TextBlock" Visibility="Collapsed"></TextBlock>
+                            <TextBlock x:ConnectionId='66' Foreground="Black" x:Name="suggestion2TextBlock" Visibility="Collapsed"></TextBlock>
+                            <TextBlock x:ConnectionId='67' Foreground="Black" x:Name="suggestion3TextBlock" Visibility="Collapsed"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Background="White" Margin="0 10 0 0" Padding="5 5 0 5">
+                            <TextBlock FontSize="20" Text="Popular Combo" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox x:ConnectionId='63' Name="popularComboCB" Width="564">
+
+                                </ComboBox>
+                                <Button x:ConnectionId='64' Foreground="Black" BorderBrush="Black" Margin="0 0 0 0" x:Name="addPopularComboButton"                                    >Add
+                                    <Button.Resources>
+                                        <ResourceDictionary>
+                                            <ResourceDictionary.ThemeDictionaries>
+                                                <ResourceDictionary x:Key="Dark">
+                                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                </ResourceDictionary>
+                                            </ResourceDictionary.ThemeDictionaries>
+                                        </ResourceDictionary>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
+                            <TextBlock FontSize="20" Text="Pizzas" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView x:ConnectionId='54'                               >
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate                         >
+                                            <StackPanel x:ConnectionId='56' Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush x:ConnectionId='62'                               Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock x:ConnectionId='57' Width="160" TextWrapping="Wrap"                      Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="Medium $20 | Large $30" Foreground="Black"></TextBlock>
+                                                    <ComboBox x:ConnectionId='58'                    Margin="0 0 0 0" PlaceholderText="Size" Foreground="Black"                                        >
+                                                        <ComboBoxItem Content="Medium"></ComboBoxItem>
+                                                        <ComboBoxItem Content="Large"></ComboBoxItem>
+                                                    </ComboBox>
+                                                    <ComboBox x:ConnectionId='59'                   Margin="0 0 0 0" PlaceholderText="Topping" Foreground="Black"                                          >
+                                                        <ComboBoxItem Content="Pepperoni"></ComboBoxItem>
+                                                        <ComboBoxItem Content="Mushrooms"></ComboBoxItem>
+                                                        <ComboBoxItem Content="Onions"></ComboBoxItem>
+                                                        <ComboBoxItem Content="Sausage"></ComboBoxItem>
+                                                    </ComboBox>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox x:ConnectionId='60' MaxLength="3" Height="32" Margin="0 0 4 0"                   PlaceholderText="Quan" Width="60"                                 />
+                                                        <Button x:ConnectionId='61'                   Foreground="Black" BorderBrush="Black" Margin="0 0 0 0"                                >Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+
+
+
+                            <TextBlock FontSize="20" Text="Wings" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView x:ConnectionId='47'                             >
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate                        >
+                                            <StackPanel x:ConnectionId='49' Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush x:ConnectionId='53'                               Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock x:ConnectionId='50' Width="160" TextWrapping="Wrap"                      Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="1 - Serving $10" Foreground="Black"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox x:ConnectionId='51' MaxLength="3" Height="32" Margin="0 0 4 0"                   PlaceholderText="Quan" Width="60"                                     />
+                                                        <Button x:ConnectionId='52'                   Foreground="Black" BorderBrush="Black" Margin="0 0 0 0"                               >Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+
+                            <TextBlock FontSize="20" Text="Sandwichs" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView x:ConnectionId='40'                                  >
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate                            >
+                                            <StackPanel x:ConnectionId='42' Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush x:ConnectionId='46'                               Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock x:ConnectionId='43' Width="160" TextWrapping="Wrap"                      Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="1 - Serving $10" Foreground="Black"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox x:ConnectionId='44' MaxLength="3" Height="32" Margin="0 0 4 0"                   PlaceholderText="Quan" Width="60"                                         />
+                                                        <Button x:ConnectionId='45'                   Foreground="Black" BorderBrush="Black" Margin="0 0 0 0"                                   >Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+                            <TextBlock FontSize="20" Text="Poutines" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView x:ConnectionId='33'                                >
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate                           >
+                                            <StackPanel x:ConnectionId='35' Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush x:ConnectionId='39'                               Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock x:ConnectionId='36' Width="160" TextWrapping="Wrap"                      Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="1 - Serving $10" Foreground="Black"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox x:ConnectionId='37' MaxLength="3" Height="32" Margin="0 0 4 0"                   PlaceholderText="Quan" Width="60"                                        />
+                                                        <Button x:ConnectionId='38'                   Foreground="Black" BorderBrush="Black" Margin="0 0 0 0"                                  >Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+                            <TextBlock FontSize="20" Text="GulabJamuns" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView x:ConnectionId='26'                                   >
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate                              >
+                                            <StackPanel x:ConnectionId='28' Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush x:ConnectionId='32'                               Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock x:ConnectionId='29' Width="160" TextWrapping="Wrap"                      Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="1 - Serving $10" Foreground="Black"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox x:ConnectionId='30' MaxLength="3" Height="32" Margin="0 0 4 0"                   PlaceholderText="Quan" Width="60"                                           />
+                                                        <Button x:ConnectionId='31'                   Foreground="Black" BorderBrush="Black" Margin="0 0 0 0"                                     >Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <StackPanel Orientation="Vertical"  Grid.Column="1" Background="White" Margin="0 10 10 0" Padding="5 5 0 5" Height="145">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:ConnectionId='24' x:Name="fullNameInformationTextBox" Width="220" MaxLength="50" PlaceholderText="Full Name" IsReadOnly="True"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBox x:ConnectionId='23' x:Name="addressInformationTextBox" Width="220" MaxLength="50" PlaceholderText="Address" IsReadOnly="True"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBox x:ConnectionId='22' x:Name="postalCodeInformationTextBox" Width="220" MaxLength="6" PlaceholderText="Postal Code" IsReadOnly="True"></TextBox>
+                        </StackPanel>
+                        <Button x:ConnectionId='19' x:Name="changeAIButton" Visibility="Collapsed" Foreground="Black" BorderBrush="Black" Width="200" Margin="0 5 0 0"                              >Change Account Information
+                            <Button.Resources>
+                                <ResourceDictionary>
+                                    <ResourceDictionary.ThemeDictionaries>
+                                        <ResourceDictionary x:Key="Dark">
+                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                        </ResourceDictionary>
+                                    </ResourceDictionary.ThemeDictionaries>
+                                </ResourceDictionary>
+                            </Button.Resources>
+                        </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:ConnectionId='20' x:Name="changeButton" Visibility="Collapsed" Foreground="Black" BorderBrush="Black" Width="100" Margin="0 5 20 0"                            >Change
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:ConnectionId='21' x:Name="cancelButton" Visibility="Collapsed" Foreground="Black" BorderBrush="Black" Width="100" Margin="0 5 0 0"                            >Cancel
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Background="White" Margin="0 10 10 0" Padding="5 5 0 5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Your Cart" FontWeight="Bold" Foreground="Black" Margin="0 0 0 10"></TextBlock>
+                            <Button x:ConnectionId='18' Padding="3 0 3 0" Foreground="Black" BorderBrush="Black" Height="23" Margin="87 0 0 0" x:Name="clearCartButton"                               >Clear Cart
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock FontWeight="bold" TextWrapping="Wrap" Width="140" Text="Item" Foreground="Black"  TextAlignment="Center"></TextBlock>
+                            <TextBlock FontWeight="bold" Width="80" Text="Price"  Foreground="Black"  TextAlignment="Right"></TextBlock>
+
+                        </StackPanel>
+
+                        <Grid>
+                            <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Visible" Height="145">
+                                <GridView x:ConnectionId='13' x:Name="itemCartGridView"                                 >
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate                       >
+                                            <StackPanel x:ConnectionId='15' Orientation="Horizontal">
+                                                <TextBlock x:ConnectionId='16' TextWrapping="Wrap" Width="140"                            Foreground="black"></TextBlock>
+                                                <TextBlock x:ConnectionId='17' Width="80"                            Foreground="Black" TextAlignment="Right"></TextBlock>
+                                            </StackPanel>
+
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </ScrollViewer>
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Total" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:ConnectionId='12' x:Name="totalTextBox" Width="80" Text=""  Foreground="Black"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Discount" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:ConnectionId='11' x:Name="discountTextBox" Width="80" Text=""  Foreground="Black"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Tax" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:ConnectionId='10' x:Name="taxTextBox" Width="80" Text=""  Foreground="Black"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Shipping" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:ConnectionId='9' x:Name="shippingTextBox" Width="80" Text=""  Foreground="Black"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Grand Total" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:ConnectionId='8' FontWeight="Bold" x:Name="grandTotalTextBox" Width="80" Text="$ 0"  Foreground="red"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock Margin="0 10 0 0" Text="Payment Information" HorizontalAlignment="Left" Foreground="Black" FontWeight="Bold"></TextBlock>
+                        <TextBox x:ConnectionId='2' x:Name="nameOnCardTBox" Width="220" MaxLength="50" PlaceholderText="Name On Card"  HorizontalAlignment="Left"></TextBox>
+                        <TextBox x:ConnectionId='3' x:Name="creadirCardNumberTBox" MaxLength="15" Width="220" PlaceholderText="Credit/Debit Card Number" HorizontalAlignment="Left"></TextBox>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:ConnectionId='5' x:Name="monthNumberTBox" MaxLength="2" Width="49" PlaceholderText="MM" HorizontalAlignment="Left"></TextBox>
+                            <TextBox x:ConnectionId='6' x:Name="yearNumberTBox" MaxLength="2" Width="49" PlaceholderText="YY" HorizontalAlignment="Left"></TextBox>
+                            <TextBox x:ConnectionId='7' x:Name="cvcNumberTBox" MaxLength="4" Width="50" PlaceholderText="CVC" HorizontalAlignment="Left"></TextBox>
+                        </StackPanel>
+
+                        <Button x:ConnectionId='4' Width="90" x:Name="CheckOutButton" Margin="0 10 0 0"  Content="Check Out" Background="#FFFDD20E" Foreground="#FF4E4E4E"                              FontWeight="Bold" >
+                            <Button.Resources>
+                                <ResourceDictionary>
+                                    <ResourceDictionary.ThemeDictionaries>
+                                        <ResourceDictionary x:Key="Dark">
+                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                        </ResourceDictionary>
+                                    </ResourceDictionary.ThemeDictionaries>
+                                </ResourceDictionary>
+                            </Button.Resources>
+                        </Button>
+
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+
+
+    </Grid>
+</Page>
+

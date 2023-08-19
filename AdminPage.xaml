@@ -1,0 +1,121 @@
+﻿<Page
+    x:Class="BaoNamVu_SpringFinalProject.adminPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BaoNamVu_SpringFinalProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:BaoNamVu_SpringFinalProject.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FF8D8D8D">
+        <StackPanel Orientation="Vertical">
+            <Button x:Name="returnLoginPageButton" Content="Return Login/Register Page" Click="returnLoginPageButton_Click" ></Button>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Row="0">
+                <TextBox FontWeight="Bold" Text="User List  (Only delete user info because userId is foreign key)"></TextBox>
+                <RelativePanel Height="200">
+                    <ListView Name="UserListLV"
+                  SelectionMode="Single"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  Margin="20 20 20 0"
+				  ItemsSource="{x:Bind usersList}" SelectionChanged="UserListLV_SelectionChanged"
+                  
+				  >
+                        <ListView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"  >
+                                    <TextBlock Text="UserID"  Width="50" FontWeight="Bold"  />
+                                    <TextBlock Text="UserName" Width="170" FontWeight="Bold" />
+                                    <TextBlock Text="UserPassword" Width="170" FontWeight="Bold" />
+                                    <TextBlock Text="FullName" Width="170" FontWeight="Bold" />
+                                    <TextBlock Text="UserAddress" Width="200" FontWeight="Bold" />
+                                    <TextBlock Text="PostalCode" Width="90" FontWeight="Bold" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.HeaderTemplate>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="data:RegisteredUser">
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind UserID}"
+                                    Width="50" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind UserName}"
+                                    Width="170" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind UserPassword}"
+									Width="170" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind FullName}"
+									Width="170" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind UserAddress}"
+									Width="200" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind PostalCode}"
+									Width="90" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </RelativePanel>
+                <Button x:Name="DeleteUserButton" Margin="10 0 0 10" Content="Delete User" Click="DeleteUserButton_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1">
+                <TextBox FontWeight="Bold" Text="Order List"></TextBox>
+                <RelativePanel Height="200">
+                    <ListView Name="OrderListLV"
+                  SelectionMode="Single"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  Margin="20 20 20 0"
+				  ItemsSource="{x:Bind ordersList}" SelectionChanged="OrderListLV_SelectionChanged"
+				  >
+                        <ListView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"  >
+                                    <TextBlock Text="OrderId" Width="50" FontWeight="Bold"  />
+                                    <TextBlock Text="UserID" Margin="8,0" Width="50" FontWeight="Bold"  />
+                                    <TextBlock Text="OrderDate" Width="100" FontWeight="Bold" />
+                                    <TextBlock Text="OrderDetail" Width="350" FontWeight="Bold" />
+                                    <TextBlock Text="OrderAddress" Width="200" FontWeight="Bold" />
+                                    <TextBlock Text="TotalAmount" Width="100" FontWeight="Bold" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.HeaderTemplate>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Order">
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind orderId}"
+                                    Width="50" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind userId}"
+                                    Width="50" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind orderDate}"
+									Width="100" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind orderDetails}"
+									Width="350" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind orderAddress}"
+									Width="200" />
+                                    <TextBlock TextWrapping="Wrap"	Text="{x:Bind orderTotalAmount}"
+									Width="100" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </RelativePanel>
+                <Button x:Name="DeleteOrder" Margin="10 0 0 0" Content="Delete Order" Click="DeleteOrder_Click"></Button>
+            </StackPanel>
+        </Grid>
+
+        </StackPanel>
+    </Grid>
+</Page>

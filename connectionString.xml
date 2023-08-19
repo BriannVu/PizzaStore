@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ConnectionStrings>
+	<Spring2021Exam>Server=LAPTOP-V3EC844G;DATABASE=Spring2021Exam;USER ID=PapaDario;PASSWORD=12345</Spring2021Exam>
+</ConnectionStrings>

@@ -1,0 +1,87 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\vubao\\Desktop\\Semester_4\\.net c#\\Final\\ver2\\BaoNamVu_SpringFinalProject\\BaoNamVu_SpringFinalProject.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\vubao\\Desktop\\Semester_4\\.net c#\\Final\\ver2\\BaoNamVu_SpringFinalProject\\BaoNamVu_SpringFinalProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vubao\\Desktop\\Semester_4\\.net c#\\Final\\ver2\\BaoNamVu_SpringFinalProject\\BaoNamVu_SpringFinalProject.csproj",
+        "projectName": "BaoNamVu_SpringFinalProject",
+        "projectPath": "C:\\Users\\vubao\\Desktop\\Semester_4\\.net c#\\Final\\ver2\\BaoNamVu_SpringFinalProject\\BaoNamVu_SpringFinalProject.csproj",
+        "packagesPath": "C:\\Users\\vubao\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vubao\\Desktop\\Semester_4\\.net c#\\Final\\ver2\\BaoNamVu_SpringFinalProject\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\vubao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.17763"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.17763": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "uap10.0.17763": {
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Xml": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[6.2.12, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-arm64-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

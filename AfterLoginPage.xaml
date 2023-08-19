@@ -1,0 +1,399 @@
+﻿<Page
+    x:Class="BaoNamVu_SpringFinalProject.AfterLoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BaoNamVu_SpringFinalProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:BaoNamVu_SpringFinalProject.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FFF1F1F1">
+        <StackPanel Orientation="Vertical">
+            <Grid Background="#FFBA4545">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="20 0 0 0" Text="Papa Dario's Pizza - Ordering App" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Grid.Column="1" Text="Welcome " x:Name="WelcomeTextBlock" FontWeight="Bold" TextAlignment="Center"  VerticalAlignment="Center"></TextBlock>
+                <Button  x:Name="backToLoginPageButton" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Click="backToLoginPageButton_Click">Back To Login/Register</Button>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer  Height="630" VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Visible" Grid.Column="0"  Margin="10 0 10 0" >
+                    <StackPanel  Orientation="Vertical" Padding="5 10 0 5">
+                        <StackPanel Padding="5 5 0 5" Orientation="Vertical" Background="White" >
+                            <TextBlock Text="Today deal" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <TextBlock Text="! FREE SHIP for order over $50 - (pre-tax) - (can apply with other deals)" Foreground="Black"></TextBlock>
+                            <TextBlock Text="Member discount: 10% OFF" Margin="0 10" Foreground="Black"></TextBlock >
+                        </StackPanel>
+                        <StackPanel x:Name="suggestionTextBox" Orientation="Vertical" Background="White" Margin="0 10 0 0" Padding="5 5 0 5" Visibility="Collapsed">
+                            <TextBlock Text="Suggestion from your most recent orders (Max 3)" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <TextBlock  Foreground="Black" x:Name="suggestion1TextBlock" Visibility="Collapsed"></TextBlock>
+                            <TextBlock Foreground="Black" x:Name="suggestion2TextBlock" Visibility="Collapsed"></TextBlock>
+                            <TextBlock Foreground="Black" x:Name="suggestion3TextBlock" Visibility="Collapsed"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Background="White" Margin="0 10 0 0" Padding="5 5 0 5">
+                            <TextBlock FontSize="20" Text="Popular Combo" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox Name="popularComboCB" Width="564">
+
+                                </ComboBox>
+                                <Button Foreground="Black" BorderBrush="Black" Margin="0 0 0 0" x:Name="addPopularComboButton" Click="addPopularComboButton_Click">Add
+                                    <Button.Resources>
+                                        <ResourceDictionary>
+                                            <ResourceDictionary.ThemeDictionaries>
+                                                <ResourceDictionary x:Key="Dark">
+                                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                </ResourceDictionary>
+                                            </ResourceDictionary.ThemeDictionaries>
+                                        </ResourceDictionary>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
+                            <TextBlock FontSize="20" Text="Pizzas" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView ItemsSource="{x:Bind pizzas}" >
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate x:DataType="data:Pizza" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush ImageSource="{x:Bind ImgUrl}" Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock Width="160" TextWrapping="Wrap" Text="{x:Bind Name}" Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="Medium $20 | Large $30" Foreground="Black"></TextBlock>
+                                                    <ComboBox Tag="{x:Bind Id}"  Margin="0 0 0 0" PlaceholderText="Size" Foreground="Black" SelectionChanged="sizeSelectionChange" >
+                                                        <ComboBoxItem Content="Medium"></ComboBoxItem>
+                                                        <ComboBoxItem Content="Large"></ComboBoxItem>
+                                                    </ComboBox>
+                                                    <ComboBox Tag="{x:Bind Id}" Margin="0 0 0 0" PlaceholderText="Topping" Foreground="Black" SelectionChanged="toppingSelectionChange">
+                                                        <ComboBoxItem Content="Pepperoni"></ComboBoxItem>
+                                                        <ComboBoxItem Content="Mushrooms"></ComboBoxItem>
+                                                        <ComboBoxItem Content="Onions"></ComboBoxItem>
+                                                        <ComboBoxItem Content="Sausage"></ComboBoxItem>
+                                                    </ComboBox>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox MaxLength="3" Height="32" Margin="0 0 4 0" Tag="{x:Bind Id}" PlaceholderText="Quan" Width="60" TextChanging="quantityBoxChange"/>
+                                                        <Button Tag="{x:Bind Id}" Foreground="Black" BorderBrush="Black" Margin="0 0 0 0" Click="addItemPizzaButtonClick">Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+
+
+
+                            <TextBlock FontSize="20" Text="Wings" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView ItemsSource="{x:Bind wings}">
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate x:DataType="data:Wing" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush ImageSource="{x:Bind ImgUrl}" Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock Width="160" TextWrapping="Wrap" Text="{x:Bind Name}" Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="1 - Serving $10" Foreground="Black"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox MaxLength="3" Height="32" Margin="0 0 4 0" Tag="{x:Bind Id}" PlaceholderText="Quan" Width="60" TextChanging="quantityWingBoxChange"/>
+                                                        <Button Tag="{x:Bind Id}" Foreground="Black" BorderBrush="Black" Margin="0 0 0 0" Click="addItemWingButtonClick">Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+
+                            <TextBlock FontSize="20" Text="Sandwichs" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView ItemsSource="{x:Bind sandwiches}">
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate x:DataType="data:Sandwich" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush ImageSource="{x:Bind ImgUrl}" Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock Width="160" TextWrapping="Wrap" Text="{x:Bind Name}" Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="1 - Serving $10" Foreground="Black"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox MaxLength="3" Height="32" Margin="0 0 4 0" Tag="{x:Bind Id}" PlaceholderText="Quan" Width="60" TextChanging="quantitySandwichBoxChange"/>
+                                                        <Button Tag="{x:Bind Id}" Foreground="Black" BorderBrush="Black" Margin="0 0 0 0" Click="addItemSandwichButtonClick">Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+                            <TextBlock FontSize="20" Text="Poutines" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView ItemsSource="{x:Bind poutines}">
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate x:DataType="data:Poutine" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush ImageSource="{x:Bind ImgUrl}" Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock Width="160" TextWrapping="Wrap" Text="{x:Bind Name}" Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="1 - Serving $10" Foreground="Black"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox MaxLength="3" Height="32" Margin="0 0 4 0" Tag="{x:Bind Id}" PlaceholderText="Quan" Width="60" TextChanging="quantityPoutineBoxChange"/>
+                                                        <Button Tag="{x:Bind Id}" Foreground="Black" BorderBrush="Black" Margin="0 0 0 0" Click="addItemPoutineButtonClick">Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+                            <TextBlock FontSize="20" Text="GulabJamuns" FontWeight="Bold" Foreground="Black"></TextBlock>
+                            <Grid >
+                                <GridView ItemsSource="{x:Bind gulabJamuns}">
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate x:DataType="data:GulabJamun" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Rectangle Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0">
+                                                    <Rectangle.Fill>
+                                                        <ImageBrush ImageSource="{x:Bind ImgUrl}" Stretch="UniformToFill"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <StackPanel Orientation="Vertical" Margin="0 0 10 0">
+                                                    <TextBlock Width="160" TextWrapping="Wrap" Text="{x:Bind Name}" Foreground="Black" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="1 - Serving $10" Foreground="Black"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox MaxLength="3" Height="32" Margin="0 0 4 0" Tag="{x:Bind Id}" PlaceholderText="Quan" Width="60" TextChanging="quantityGulabJamunBoxChange"/>
+                                                        <Button Tag="{x:Bind Id}" Foreground="Black" BorderBrush="Black" Margin="0 0 0 0" Click="addItemGulabJamunButtonClick">Add
+                                                            <Button.Resources>
+                                                                <ResourceDictionary>
+                                                                    <ResourceDictionary.ThemeDictionaries>
+                                                                        <ResourceDictionary x:Key="Dark">
+                                                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                                                        </ResourceDictionary>
+                                                                    </ResourceDictionary.ThemeDictionaries>
+                                                                </ResourceDictionary>
+                                                            </Button.Resources>
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <StackPanel Orientation="Vertical"  Grid.Column="1" Background="White" Margin="0 10 10 0" Padding="5 5 0 5" Height="145">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="fullNameInformationTextBox" Width="220" MaxLength="50" PlaceholderText="Full Name" IsReadOnly="True"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBox x:Name="addressInformationTextBox" Width="220" MaxLength="50" PlaceholderText="Address" IsReadOnly="True"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBox x:Name="postalCodeInformationTextBox" Width="220" MaxLength="6" PlaceholderText="Postal Code" IsReadOnly="True"></TextBox>
+                        </StackPanel>
+                        <Button x:Name="changeAIButton" Visibility="Collapsed" Foreground="Black" BorderBrush="Black" Width="200" Margin="0 5 0 0" Click="changeAIButton_Click" >Change Account Information
+                            <Button.Resources>
+                                <ResourceDictionary>
+                                    <ResourceDictionary.ThemeDictionaries>
+                                        <ResourceDictionary x:Key="Dark">
+                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                        </ResourceDictionary>
+                                    </ResourceDictionary.ThemeDictionaries>
+                                </ResourceDictionary>
+                            </Button.Resources>
+                        </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="changeButton" Visibility="Collapsed" Foreground="Black" BorderBrush="Black" Width="100" Margin="0 5 20 0" Click="changeButton_Click" >Change
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="cancelButton" Visibility="Collapsed" Foreground="Black" BorderBrush="Black" Width="100" Margin="0 5 0 0" Click="cancelButton_Click" >Cancel
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Background="White" Margin="0 10 10 0" Padding="5 5 0 5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Your Cart" FontWeight="Bold" Foreground="Black" Margin="0 0 0 10"></TextBlock>
+                            <Button Padding="3 0 3 0" Foreground="Black" BorderBrush="Black" Height="23" Margin="87 0 0 0" x:Name="clearCartButton" Click="clearCartButton_Click" >Clear Cart
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock FontWeight="bold" TextWrapping="Wrap" Width="140" Text="Item" Foreground="Black"  TextAlignment="Center"></TextBlock>
+                            <TextBlock FontWeight="bold" Width="80" Text="Price"  Foreground="Black"  TextAlignment="Right"></TextBlock>
+
+                        </StackPanel>
+
+                        <Grid>
+                            <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Visible" Height="145">
+                                <GridView x:Name="itemCartGridView" ItemsSource="{x:Bind itemsCart}">
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate x:DataType="data:Item">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock TextWrapping="Wrap" Width="140" Text="{x:Bind ToString()}" Foreground="black"></TextBlock>
+                                                <TextBlock Width="80" Text="{x:Bind TotalPrice}" Foreground="Black" TextAlignment="Right"></TextBlock>
+                                            </StackPanel>
+
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </ScrollViewer>
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Total" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:Name="totalTextBox" Width="80" Text=""  Foreground="Black"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Discount" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:Name="discountTextBox" Width="80" Text=""  Foreground="Black"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Tax" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:Name="taxTextBox" Width="80" Text=""  Foreground="Black"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Shipping" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock x:Name="shippingTextBox" Width="80" Text=""  Foreground="Black"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Width="140" Text="Grand Total" Foreground="Black"  TextAlignment="Right"></TextBlock>
+                            <TextBlock FontWeight="Bold" x:Name="grandTotalTextBox" Width="80" Text="$ 0"  Foreground="red"  TextAlignment="Right"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock Margin="0 10 0 0" Text="Payment Information" HorizontalAlignment="Left" Foreground="Black" FontWeight="Bold"></TextBlock>
+                        <TextBox x:Name="nameOnCardTBox" Width="220" MaxLength="50" PlaceholderText="Name On Card"  HorizontalAlignment="Left"></TextBox>
+                        <TextBox x:Name="creadirCardNumberTBox" MaxLength="15" Width="220" PlaceholderText="Credit/Debit Card Number" HorizontalAlignment="Left"></TextBox>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="monthNumberTBox" MaxLength="2" Width="49" PlaceholderText="MM" HorizontalAlignment="Left"></TextBox>
+                            <TextBox x:Name="yearNumberTBox" MaxLength="2" Width="49" PlaceholderText="YY" HorizontalAlignment="Left"></TextBox>
+                            <TextBox x:Name="cvcNumberTBox" MaxLength="4" Width="50" PlaceholderText="CVC" HorizontalAlignment="Left"></TextBox>
+                        </StackPanel>
+
+                        <Button Width="90" x:Name="CheckOutButton" Margin="0 10 0 0"  Content="Check Out" Background="#FFFDD20E" Foreground="#FF4E4E4E" Click="CheckOutButton_Click" FontWeight="Bold" >
+                            <Button.Resources>
+                                <ResourceDictionary>
+                                    <ResourceDictionary.ThemeDictionaries>
+                                        <ResourceDictionary x:Key="Dark">
+                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                        </ResourceDictionary>
+                                    </ResourceDictionary.ThemeDictionaries>
+                                </ResourceDictionary>
+                            </Button.Resources>
+                        </Button>
+
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+
+
+    </Grid>
+</Page>

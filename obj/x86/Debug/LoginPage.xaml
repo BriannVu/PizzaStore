@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="BaoNamVu_SpringFinalProject.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BaoNamVu_SpringFinalProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FFF1F1F1">
+        <Grid Margin="40 40" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Background="#FFBA4545" Padding="25">
+                <TextBlock Text="Papa Dario's Pizza" FontWeight="Bold" FontSize="24"></TextBlock>
+                <TextBlock Text="Ordering App" FontWeight="Bold" FontSize="24"></TextBlock>
+
+                <TextBlock Margin="0 50 0 0" Text="Log In" FontSize="24"></TextBlock>
+                <TextBox x:ConnectionId='8' x:Name="userNameTextBox" Margin="0 20 0 0" PlaceholderText="Your username" FontSize="13" MaxLength="50"></TextBox>
+                <PasswordBox x:ConnectionId='9' x:Name="passwordTextBox"  Margin="0 5 0 0" PlaceholderText="Password" FontSize="13" MaxLength="50"></PasswordBox>
+                <Button x:ConnectionId='10' x:Name="loginButton" Margin="0 20 0 0"  Content="Login" Background="#FFFDD20E" Foreground="#FF4E4E4E" FontWeight="Bold"                          ></Button>
+
+                <Button x:ConnectionId='11' x:Name="loginAsGuestButton" Margin="0 10 0 0" FontSize="10"                                 >Login As Guest</Button>
+
+                <Button x:ConnectionId='12' x:Name="loginAsAdminButton" Margin="0 80 0 0" FontSize="10"                           >Access Admin Page</Button>
+                <TextBlock x:ConnectionId='13' x:Name="resultTextBlock"></TextBlock>
+
+            </StackPanel>
+            <StackPanel Grid.Column="2" Padding="70 25">
+                <TextBlock Text="Register Form" Margin="0 40 0 0" Foreground="black" FontWeight="Bold" FontSize="24"></TextBlock>
+                <TextBox x:ConnectionId='2' x:Name="registeredUserNameTextBox" Margin="0 20 0 0" PlaceholderText="Username" FontSize="13" Width="400" HorizontalAlignment="Left" MaxLength="50"></TextBox>
+                <PasswordBox x:ConnectionId='3' x:Name="registeredPasswordTextBox"  Margin="0 5 0 0" PlaceholderText="Password" FontSize="13" Width="400" HorizontalAlignment="Left" MaxLength="50"></PasswordBox>
+                <TextBox x:ConnectionId='4' x:Name="registeredFullNameTextBox" Margin="0 5 0 0" PlaceholderText="Fullname" FontSize="13" Width="400" HorizontalAlignment="Left" MaxLength="50"></TextBox>
+                <TextBox x:ConnectionId='5' x:Name="registeredAddressTextBox" Margin="0 5 0 0" PlaceholderText="Address" FontSize="13" Width="400" HorizontalAlignment="Left" MaxLength="50"></TextBox>
+                <TextBox x:ConnectionId='6' x:Name="registeredPostalCodeTextBox" Margin="0 5 0 0" PlaceholderText="Postal Code" FontSize="13" MaxLength="6" Width="400" HorizontalAlignment="Left"></TextBox>
+                <Button x:ConnectionId='7' x:Name="registerButton" Margin="0 20 0 0"  Content="Register" FontWeight="Bold" Foreground="Black" BorderBrush="#FF020202"                             >
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Dark">
+                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="white"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
+
